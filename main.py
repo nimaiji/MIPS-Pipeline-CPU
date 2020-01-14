@@ -1,4 +1,5 @@
 import threading
-import Clock
+import InstructionMemory
+import RFormat
 
-c = Clock.Clock(1)
+i = InstructionMemory.InstructionMemory('instruction.txt')
