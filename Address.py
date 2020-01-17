@@ -22,5 +22,11 @@ class Address32:
             m *= 2
         return eq
 
+    def __add__(self, other):
+        if type(other) == int:
+            return Address32(self.intformat + other)
+        elif type(other) == Address32:
+            return Address32(self.intformat + Address32.intformat)
+
     def __str__(self):
         return str(self.intformat) + ':' + self.bitformat
