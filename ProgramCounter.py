@@ -1,10 +1,14 @@
+import Address
+
 class ProgramCounter:
 
     def __init__(self):
-        #should be 32 bit address
-        self.index = 0
+        self.addr = Address.Address32(0)
 
-    def nextinstruction(self):
-        self.index +=4
+    def nextinstruction(self, offset):
+        self.addr += offset
+
+    def __str__(self):
+        return str(self.addr)
 
 
