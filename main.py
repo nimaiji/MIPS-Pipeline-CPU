@@ -1,5 +1,9 @@
 import threading
-import InstructionMemory
-import RFormat
+import numpy as np
+import Address
+import RegisterFile
+import ALU
 
-i = InstructionMemory.InstructionMemory('instruction.txt')
+a = ALU.ALU(0,0,0)
+print(a.signextend('0010101'))
+

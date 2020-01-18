@@ -1,7 +1,26 @@
 import opcodes
-import RFormat
-import IFormat
-import JFormat
+import Format
+import Address
+
+
+class DataMemory:
+
+    def __init__(self, baseaddr):
+        self.addr = 0
+        self.wdata = 0
+        self.baseaddr = Address.Address32(baseaddr)
+        self.output = 0
+        self.MEMORY = {}
+
+    def update(self, addr, wdata):
+        # needs control signals from control unit
+        print()
+
+    def write(self, addr, wdata):
+        self.MEMORY[addr] = wdata
+
+    def read(self, addr):
+        self.output = self.MEMORY[addr]
 
 
 class InstructionMemory:
@@ -23,13 +42,14 @@ class InstructionMemory:
                 self.instructions_in_array += [str(self.createJFormat(line))]
 
     def createRFormat(self, instruction):
-        i = RFormat.RFormat(instruction[0:6], instruction[6:11], instruction[11:16], instruction[16:21], instruction[21:26], instruction[26:32])
+        i = Format.RFormat(instruction[0:6], instruction[6:11], instruction[11:16], instruction[16:21],
+                           instruction[21:26], instruction[26:32])
         return i
 
     def createIFormat(self, instruction):
-        i = IFormat.IFormat(instruction[0:6], instruction[6:11], instruction[11:16], instruction[16:32])
+        i = Format.IFormat(instruction[0:6], instruction[6:11], instruction[11:16], instruction[16:32])
         return i
 
     def createJFormat(self, instruction):
-        i = JFormat.JFormat(instruction[0:6], instruction[6:32])
+        i = Format.JFormat(instruction[0:6], instruction[6:32])
         return i

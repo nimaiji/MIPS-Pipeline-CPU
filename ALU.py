@@ -59,3 +59,6 @@ class ALU:
 
     def shiftleft(self, data, amount):  # for better simulation
         return data << amount
+
+    def isequal(self, in1, in2):
+        return in1 == in2
