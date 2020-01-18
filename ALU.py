@@ -1,6 +1,11 @@
 class ALUContorl:
 
-    def __init__(self, funct, aluop):
+    def __init__(self):
+        self.funct = 0
+        self.aluop = 0
+        self.output = 0
+
+    def update(self, funct, aluop):
         self.funct = funct
         self.aluop = aluop
         self.output = 0
@@ -18,7 +23,13 @@ class ALUContorl:
 
 class ALU:
 
-    def __init__(self, in1, in2, aluc):
+    def __init__(self):
+        self.input1 = 0
+        self.input2 = 0
+        self.output = 0
+        self.zero = 0
+
+    def update(self, in1, in2, aluc):
         self.input1 = in1
         self.input2 = in2
         self.output = 0
@@ -39,11 +50,11 @@ class ALU:
             self.zero = 1
 
     def signextend(self, offset):
-        if len(offset) != 32:
+        if len(offset) < 32:
             base = '0' * (32 - len(offset)) + offset
         return base
 
-    def adder(self, in1, in2): # for better simulation
+    def adder(self, in1, in2):  # for better simulation
         return in1 + in2
 
     def shiftleft(self, data, amount):  # for better simulation
