@@ -1,4 +1,5 @@
 #Rformats
+RFORMAT = '000000'
 ADD = '000000'
 SUB = '000000'
 AND = '000000'
