@@ -50,7 +50,17 @@ class MainControl:
             self.MemWrtie = 0
             self.Branch = 1
             self.Jump = 0
-            self.aluop = '01'
+            self.aluop = 'x1'
+        elif opcode == opcodes.SLT:
+            self.RegDst = 1
+            self.ALUSrc = 0
+            self.MemtoReg = 0
+            self.RegWrite = 1
+            self.MemRead = 0
+            self.MemWrtie = 0
+            self.Branch = 0
+            self.Jump = 0
+            self.aluop = '1x'
         elif opcode == opcodes.J:
             self.RegWrite = 0
             self.MemRead = 0

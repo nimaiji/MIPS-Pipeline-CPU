@@ -9,7 +9,7 @@ class ALUContorl:
         self.funct = funct
         self.aluop = aluop
         self.output = 0
-        if aluop == 00 or (aluop[0] == '1' and funct[2:6] == '0000'):  # add
+        if aluop == '00' or (aluop[0] == '1' and funct[2:6] == '0000'):  # add
             self.output = '010'
         elif aluop[1] == '1' or (aluop[0] == '1' and funct[2:6] == '0010'):
             self.output = '110'
