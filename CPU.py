@@ -119,10 +119,6 @@ class MIPS:
             self.ifid.flush()
         else:
             self.ifid.update(self.pc.addr, new_instruction, self.cu.IFFlush, self.hd.IFIDWrtie)
-        print('Stage2:' , self.ifid.instruction)
-        print('Stage3', self.)
-        print(rf.rt.addr)
-        print(rf.rd.addr)
         self.pc.nextinstruction(self.hd.PCWrite, self.cu.PCSrc, new_pc, 0)
         print(registers.REGISTER_FILE)
         self.cycle += 1
