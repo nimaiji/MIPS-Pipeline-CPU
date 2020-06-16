@@ -2,23 +2,23 @@ class ALUContorl:
 
     def __init__(self):
         self.funct = 0
-        self.aluop = 0
-        self.output = 0
+        self.aluop = 'xxx'
+        self.aluc = 0
 
     def update(self, funct, aluop):
         self.funct = funct
         self.aluop = aluop
-        self.output = 0
-        if aluop == '00' or (aluop[0] == '1' and funct[2:6] == '0000'):  # add
-            self.output = '010'
-        elif aluop[1] == '1' or (aluop[0] == '1' and funct[2:6] == '0010'):
-            self.output = '110'
-        elif aluop[0] == '1' and funct[2:6] == '0100':  # and
-            self.output = '000'
-        elif aluop[0] == '1' and funct[2:6] == '0101':  # or
-            self.output = '001'
-        elif aluop[0] == '1' and funct[2:6] == '1010':  # slt
-            self.output = '111'
+        self.aluc = 'xxx'
+        if aluop == '00' or (aluop[0] == '1' and funct == '100000'):  # add
+            self.aluc = '010'
+        elif aluop[1] == '1' or (aluop[0] == '1' and funct == '100010'):
+            self.aluc = '110'
+        elif aluop[0] == '1' and funct == '100100':  # and
+            self.aluc = '000'
+        elif aluop[0] == '1' and funct == '100101':  # or
+            self.aluc = '001'
+        elif aluop[0] == '1' and funct == '101010':  # slt
+            self.aluc = '111'
 
 
 class ALU:
@@ -26,28 +26,30 @@ class ALU:
     def __init__(self):
         self.input1 = 0
         self.input2 = 0
-        self.output = 0
+        self.result = 0
         self.zero = 0
 
     def update(self, in1, in2, aluc):
         self.input1 = in1
         self.input2 = in2
-        self.output = 0
+        self.result = 0
         self.zero = 0
 
         if aluc == '010':  # addi, lw, sw #add
-            self.output = in1 + in2
+            self.result = in1 + in2
         elif aluc == '110':  # beq, bne #sub
-            self.output = in1 - in2
+            self.result = in1 - in2
         elif aluc == '000':  # and
-            self.output = in1 & in2
+            self.result = in1 & in2
         elif aluc == '001':  # or
-            self.output = in1 | in2
+            self.result = in1 | in2
         elif aluc == '111':  # slt
-            self.output = in1 - in2
+            self.result = in1 - in2
 
-        if self.output == 0:
+        if self.result == 0:
             self.zero = 1
+
+        print(in1, in2, self.result, aluc)
 
     def signextend(self, offset):
         if len(offset) < 32:

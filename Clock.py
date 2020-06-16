@@ -16,4 +16,5 @@ class Clock:
             self.state = 1
         else:
             self.state = 0
-        print(self.state, self.cycle_count)
+        print(self.state,self.cycle_count)
+

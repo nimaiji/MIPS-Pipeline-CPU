@@ -30,5 +30,7 @@ GP = 28
 SP = 29
 FP = 30
 RA = 31
-REGISTER_FILE = {ZERO, AT, V0, V1, A0, A1, A2, A3, T0, T1, T2, T3, T4, T5, T6, T7, S0, S1, S2, S3, S4, S5, S6, S7, T8,
-                 T9, K0, K1, GP, SP, FP, RA}
+REGISTER_FILE = {ZERO: 0, AT: 0, V0: 0, V1: 0, A0: 0, A1: 0, A2: 0, A3: 0, T0: 0, T1: 1, T2: 1, T3: 0, T4: 0, T5: 0,
+                 T6: 0, T7: 0, S0: 0,
+                 S1: 0, S2: 0, S3: 0, S4: 0, S5: 0, S6: 0, S7: 0, T8: 0, T9: 0, K0: 0, K1: 0, GP: 0, SP: 0, FP: 0,
+                 RA: 0}

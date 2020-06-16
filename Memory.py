@@ -12,9 +12,12 @@ class DataMemory:
         self.output = 0
         self.MEMORY = {}
 
-    def update(self, addr, wdata):
-        # needs control signals from control unit
-        print()
+    def update(self, addr, wdata, MemWrtie, MemRead):
+        if MemWrtie == 1:
+            self.write(addr, wdata)
+
+        if MemRead == 1:
+            self.read(addr)
 
     def write(self, addr, wdata):
         self.MEMORY[addr] = wdata
@@ -35,11 +38,17 @@ class InstructionMemory:
         for line in file:
             line = line.rstrip('\n')
             if line[0:6] == '000000':
-                self.instructions_in_array += [str(self.createRFormat(line))]
+                self.instructions_in_array += [self.createRFormat(line)]
             elif line[0:6] == opcodes.BEQ or line[0:6] == opcodes.LW or line[0:6] == opcodes.SW:
-                self.instructions_in_array += [str(self.createIFormat(line))]
+                self.instructions_in_array += [self.createIFormat(line)]
             elif line[0:6] == opcodes.J:
-                self.instructions_in_array += [str(self.createJFormat(line))]
+                self.instructions_in_array += [self.createJFormat(line)]
+
+    def update(self, addr):
+        try:
+            return self.instructions_in_array[addr.intformat]
+        except:
+            return Format.RFormat('0' * 6, '0' * 5, '0' * 5, '0' * 5, '0' * 5, '0' * 6)
 
     def createRFormat(self, instruction):
         i = Format.RFormat(instruction[0:6], instruction[6:11], instruction[11:16], instruction[16:21],

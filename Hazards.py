@@ -11,8 +11,8 @@ class ForwardingUnit:
         self.exmemrd = 0
         self.memwbRegWrite = 0
         self.memwbrd = 0
-        self.fa = ''
-        self.fb = ''
+        self.fa = '00'
+        self.fb = '00'
 
     def update(self, idexrs, idexrt, exmemrd, memwbrd, exmemRegWrite, memwbRegWrite):
         self.idexrs = idexrs
@@ -21,6 +21,8 @@ class ForwardingUnit:
         self.memwbrd = memwbrd
         self.exmemRegWrite = exmemRegWrite
         self.memwbRegWrite = memwbRegWrite
+        self.fa = '00'
+        self.fb = '00'
         if exmemRegWrite and (self.exmemrd != registers.REGISTER_FILE[0]) and (self.exmemrd != self.idexrs):
             self.fa = '10'
         elif exmemRegWrite and (self.exmemrd != registers.REGISTER_FILE[0]) and (self.exmemrd != self.idexrt):
@@ -43,6 +45,7 @@ class HazardDetection:
         self.PCWrite = 0
         self.IFIDWrtie = 0
         self.cmuxselect = 0
+
 
     def update(self, idexrt, ifidrd, ifidrt, idexMemRead):
         self.idexrt = idexrt
